@@ -107,7 +107,7 @@ def get_dashboard_analytics(
     return {
         "total_scans": total_scans + 112, # Merge real + historical base for realistic totals
         "total_patients": total_patients + 94,
-        "average_confidence": average_confidence,
+        "average_confidence": avg_confidence,
         "disease_distribution": disease_distribution,
         "monthly_predictions": monthly_predictions,
         "model_performance": model_performance

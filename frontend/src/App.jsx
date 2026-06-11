@@ -25,8 +25,11 @@ export default function App() {
     if (authStatus) {
       const activeUser = authService.getUser();
       setUser(activeUser);
-      // Default logged in view
-      setView('dashboard');
+      if (activeUser && activeUser.role === 'patient') {
+        setView('profile');
+      } else {
+        setView('dashboard');
+      }
     }
   }, []);
 
@@ -44,7 +47,11 @@ export default function App() {
   const handleLoginSuccess = (loggedInUser) => {
     setUser(loggedInUser);
     setIsAuthenticated(true);
-    setView('dashboard');
+    if (loggedInUser.role === 'patient') {
+      setView('profile');
+    } else {
+      setView('dashboard');
+    }
   };
 
   const handleLogout = () => {

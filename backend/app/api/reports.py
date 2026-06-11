@@ -29,8 +29,7 @@ def get_report_by_prediction(
 @router.get("/{prediction_id}/download")
 def download_pdf_report(
     prediction_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    db: Session = Depends(get_db)
 ):
     """
     Downloads the generated PDF medical report.

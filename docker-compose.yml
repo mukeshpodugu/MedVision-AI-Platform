@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: medvision_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: medvision_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Backend FastAPI Service
+  backend:
+    build: ./backend
+    container_name: medvision_backend_api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DOCKER_ENV=true
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/medvision_db
+      - SECRET_KEY=medvision-super-secret-docker-deployment-key
+    depends_on:
+      - db
+    volumes:
+      - uploads_volume:/workspace/uploads
+
+  # Frontend Nginx React Service
+  frontend:
+    build: ./frontend
+    container_name: medvision_frontend_app
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+    driver: local
+  uploads_volume:
+    driver: local

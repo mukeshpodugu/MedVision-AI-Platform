@@ -4,6 +4,14 @@ MedVision AI is a production-grade AI-powered healthcare technology solution des
 
 ---
 
+## 🌐 Live Deployed Application
+
+*   **Production Web App (Vercel)**: [https://med-vision-ai-platform.vercel.app](https://med-vision-ai-platform.vercel.app)
+*   **Production API Server (Render)**: [https://medvision-backend-uhe7.onrender.com](https://medvision-backend-uhe7.onrender.com)
+*   **Interactive Swagger API Docs**: [https://medvision-backend-uhe7.onrender.com/docs](https://medvision-backend-uhe7.onrender.com/docs)
+
+---
+
 ## 👨‍💻 Developer Information
 
 *   **Lead Architect**: PODUGU MUKESH
@@ -144,7 +152,7 @@ erDiagram
 
 ## 🔌 API Documentation (FastAPI REST Endpoints)
 
-FastAPI automatically serves interactive Swagger documentation at `http://localhost:8000/docs`.
+FastAPI automatically serves interactive Swagger documentation. You can access it locally at `http://localhost:8000/docs` or on the live server at [https://medvision-backend-uhe7.onrender.com/docs](https://medvision-backend-uhe7.onrender.com/docs).
 
 ### Authentication Gateway (`/api/v1/auth`)
 *   `POST /register`: Registers a new clinician or administrator profile.

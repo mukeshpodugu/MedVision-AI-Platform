@@ -8,7 +8,7 @@ import {
   AlertCircle,
   FolderOpen
 } from 'lucide-react';
-import { diagnosisService } from '../api';
+import { diagnosisService, MEDIA_URL } from '../api';
 
 export default function Reports() {
   const [predictions, setPredictions] = useState([]);
@@ -174,7 +174,7 @@ export default function Reports() {
                     </td>
                     <td className="p-4 text-right">
                       <a
-                        href={`http://localhost:8000/api/v1/reports/${pred.id}/download`}
+                        href={`${MEDIA_URL}/api/v1/reports/${pred.id}/download`}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-800 dark:bg-dark-800 dark:text-slate-200 hover:bg-secondary-500 hover:text-white dark:hover:bg-secondary-600 dark:hover:text-white rounded-lg font-semibold transition-all"

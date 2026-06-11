@@ -10,7 +10,7 @@ import {
   CheckCircle,
   FileDown
 } from 'lucide-react';
-import { diagnosisService, api } from '../api';
+import { diagnosisService, api, MEDIA_URL } from '../api';
 
 const CATEGORIES = [
   { id: 'chest_xray', name: 'Chest X-Ray Analysis', placeholderImg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200&auto=format&fit=crop&q=60' },
@@ -411,7 +411,7 @@ export default function DiseaseDetection() {
                   <div className="space-y-3">
                     <div className="relative bg-slate-50 dark:bg-dark-950 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800/30 flex items-center justify-center p-3 h-60">
                       <img 
-                        src={showHeatmap ? `http://localhost:8000${result.explainability_path}` : previewUrl} 
+                        src={showHeatmap ? `${MEDIA_URL}${result.explainability_path}` : previewUrl} 
                         alt="Diagnosis Visualization" 
                         className="max-w-full max-h-full object-contain rounded"
                       />
@@ -492,7 +492,7 @@ export default function DiseaseDetection() {
                 {/* Report Download CTA */}
                 <div className="pt-4 border-t border-slate-100 dark:border-slate-800/40 flex justify-end">
                   <a
-                    href={`http://localhost:8000/api/v1/reports/${result.id}/download`}
+                    href={`${MEDIA_URL}/api/v1/reports/${result.id}/download`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-bold hover:scale-[1.02] active:scale-[0.98] hover:bg-slate-850 dark:hover:bg-slate-100 transition-all shadow-md shadow-slate-900/10 dark:shadow-none"
